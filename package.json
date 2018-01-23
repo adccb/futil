@@ -2,7 +2,7 @@
   "name": "futil",
   "version": "1.0.0",
   "description": "a tiny functional utility library",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
