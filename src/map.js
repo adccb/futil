@@ -7,7 +7,7 @@ const map = (f: Function, i: Iterable): Either<Iterable, Function> => {
     return i.map(f)
   } else {
     const newObj = {}
-    Object.keys(i).forEach(k => newObj[k] = f(i[k]))
+    Object.keys(i).forEach(k => newObj[k] = f(((i: any): Object)[k]))
     return newObj
   }
 }

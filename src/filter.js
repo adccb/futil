@@ -8,7 +8,7 @@ const filter = (f: Function, i: Iterable): Either<Iterable, Function> => {
   } else {
     const newObj = {}
     Object.keys(i).forEach(k => {
-      if(f(i[k])) newObj[k] = i[k]
+      if(f(((i: any): Object)[k])) newObj[k] = ((i: any): Object)[k]
     })
     return newObj
   }
