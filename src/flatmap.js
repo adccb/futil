@@ -5,7 +5,11 @@ const { map } = require('./map.js')
 const { flatten } = require('./flatten.js')
 
 const flatMap = (f: Function, a: NestedArray<any>): Either<Iterable, Function> => {
-  return map(f, flatten(a))
+  if(typeof a === 'undefined') {
+    return (a: NestedArray<any>) => map(f, flatten(a))
+  } else {
+    return map(f, flatten(a))
+  }
 }
 
 module.exports = { flatMap }

@@ -18,3 +18,21 @@ describe('reduce#array', () => {
   })
 })
 
+describe('reduce#curry', () => {
+  it('should return a function if not passed an iterable', () => {
+    const f = n => n + 2
+    const c = reduce(f)
+
+    expect(typeof c).toEqual('function')
+  })
+
+  it('should return a correct function', () => {
+    const i = [ 1, 2, 3, 4, 5 ]
+    const f = (a, b) => a + b
+    const o = 15
+    const c = reduce(f)
+    
+    expect(c(i)).toEqual(o)
+  })
+})
+

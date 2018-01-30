@@ -66,3 +66,21 @@ describe('map#object', () => {
   })
 })
 
+describe('map#curry', () => {
+  it('should return a function if not passed an iterable', () => {
+    const f = n => n + 2
+    const c = map(f)
+
+    expect(typeof c).toEqual('function')
+  })
+
+  it('should return a correct function', () => {
+    const i = [ 1, 2, 3, 4, 5 ]
+    const f = n => n + 1
+    const o = [ 2, 3, 4, 5, 6 ]
+    const c = map(f)
+    
+    expect(c(i)).toEqual(o)
+  })
+})
+
