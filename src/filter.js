@@ -1,22 +1,15 @@
 // @flow
 
+import { attachProperty } from './func.js'
+
 import type { Either, Iterable } from './types.js'
 
-const filter = (f: Function, i: Iterable): Either<Iterable, Function> => {
-  if(typeof i === 'undefined') {
-    return (i: Iterable) => filter(f, i)
-  }
+const filterObj = (f: Function, o: Object) =>
+  Object.keys(o).reduce((acc, key) => 
+    f(o[key]) ? attachProperty(acc, key, o[key]) : acc, {})
 
-  if(Array.isArray(i)) {
-    return i.filter(f)
-  } else {
-    const newObj = {}
-    Object.keys(i).forEach(k => {
-      if(f(((i: any): Object)[k])) newObj[k] = ((i: any): Object)[k]
-    })
-    return newObj
-  }
-}
-
-module.exports = { filter }
+export const filter = (f: Function, i: Iterable): Either<Iterable, Function> =>
+  typeof i === 'undefined'
+    ? (i: Iterable) => filter(f, i)
+    : Array.isArray(i) ? i.filter(f) : filterObj(f, i)
 

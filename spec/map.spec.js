@@ -38,7 +38,7 @@ describe('map#object', () => {
     const i = { a: 1, b: 2, c: 3 }
     const f = n => n + 1
     const o = { a: 2, b: 3, c: 4 }
-
+    
     expect(map(f, i)).toEqual(o)
   })
 

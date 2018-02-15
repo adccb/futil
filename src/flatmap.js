@@ -1,16 +1,12 @@
 // @flow
 
+import { map } from './map.js'
+import { flatten } from'./flatten.js'
+
 import type { Either, Iterable, NestedArray } from './types.js'
-const { map } = require('./map.js')
-const { flatten } = require('./flatten.js')
 
-const flatMap = (f: Function, a: NestedArray<any>): Either<Iterable, Function> => {
-  if(typeof a === 'undefined') {
-    return (a: NestedArray<any>) => map(f, flatten(a))
-  } else {
-    return map(f, flatten(a))
-  }
-}
-
-module.exports = { flatMap }
+export const flatMap = (f: Function, a: NestedArray<any>): Either<Iterable, Function> =>
+  typeof a === 'undefined'
+    ? (a: NestedArray<any>) => map(f, flatten(a))
+    : map(f, flatten(a))
 

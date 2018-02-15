@@ -1,20 +1,15 @@
 // @flow
 
+import { attachProperty } from './func.js'
+
 import type { Either, Iterable } from './types.js'
 
-const map = (f: Function, i: Iterable): Either<Iterable, Function> => {
-  if(typeof i === 'undefined') {
-    return (i: Iterable) => map(f, i)
-  }
-  
-  if(Array.isArray(i)) {
-    return i.map(f)
-  } else {
-    const newObj = {}
-    Object.keys(i).forEach(k => newObj[k] = f(((i: any): Object)[k]))
-    return newObj
-  }
-}
+const mapObj = (f: Function, o: Object) =>
+  Object.keys(o).reduce((acc, key) => 
+    f(o[key]) ? attachProperty(acc, key, f(o[key])) : acc, {})
 
-module.exports = { map }
+export const map = (f: Function, i: Iterable): Either<Iterable, Function> =>
+  typeof i === 'undefined'
+    ? (i: Iterable) => map(f, i)
+    : Array.isArray(i) ? i.map(f) : mapObj(f, i)
 
