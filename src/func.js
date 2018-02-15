@@ -1,7 +1,4 @@
 // @flow
 
-export const attachProperty = (o: Object, k: string, v: any) => {
-  o[k] = v
-  return o
-}
-
+export const attachProperty = (o: Object, k: string, v: any) => 
+  Object.assign({}, { [k]: v }, o)
