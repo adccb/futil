@@ -28,11 +28,11 @@ addOne([ 2, 3, 4, 5, 6 ])
 const arr = [ 1, 2, 3, 4, 5 ]
 const f = i => i > 3
 
-reduce(f, arr)
+filter(f, arr)
   => [ 4, 5 ]
 
 // partial application
-greaterThanThree = reduce(f)
+greaterThanThree = filter(f)
 greaterThanThree(arr)
   => [ 4, 5 ]
 
@@ -45,12 +45,13 @@ greaterThanThree([ 2, 3, 4, 5, 6 ])
 ```js
 const arr = [ 1, 2, 3, 4, 5 ]
 const f = (total, item) => total + item
+const base = 0
 
-reduce(f, arr)
+reduce(f, base, arr)
   => 15
 
 // partial application
-const sum = reduce(f)
+const sum = reduce(f, base)
 sum(arr)
   => 15
 
