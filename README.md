@@ -22,6 +22,45 @@ addOne([ 2, 3, 4, 5, 6 ])
   => [ 3, 4, 5, 6, 7 ]
 ```
 
+### every
+```js
+const a = [ 1, 2, 3, 4, 5 ]
+const f = i => typeof i === 'number'
+
+every(f, a)
+  => true
+
+// partial application
+const isNumeric = every(f)
+isNumeric(a)
+  => true
+```
+
+### sum
+```js
+const arr = [ 1, 2, 3, 4, 5 ]
+sum(arr)
+  => 15
+```
+
+### equals
+
+```js
+const a = [ 1, 2, 3, 4, 5 ]
+const b = [ 1, 2, 3, 4, 5 ]
+const c = [ 2, 3, 4, 5, 6 ]
+
+equals(a, b)
+  => true
+
+// partial application
+const equalsA = equals(a)
+
+equalsA(c)
+  => false
+
+```
+
 ### range
 
 ```js
