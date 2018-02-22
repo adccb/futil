@@ -1,9 +1,10 @@
-const { filter } = require('./filter.js')
-const { flatten } = require('./flatten.js')
-const { flatMap } = require('./flatmap.js')
-const { map } = require('./map.js')
-const { reduce } = require('./reduce.js')
-const { lift } = require('./lift.js')
+import { filter } from './filter'
+import { flatten } from './flatten'
+import { flatMap } from './flatmap'
+import { map } from './map'
+import { reduce } from './reduce'
+import { lift } from './lift'
+import { attachProperty, lhs, range, rhs } from './func' 
 
-module.exports = { filter, flatten, flatMap, map, reduce, lift }
+module.exports = { attachProperty, filter, flatten, flatMap, lhs, map, range, reduce, rhs, lift }
 

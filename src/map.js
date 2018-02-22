@@ -5,8 +5,7 @@ import { attachProperty } from './func.js'
 import type { Either, Iterable } from './types.js'
 
 const mapObj = (f: Function, o: Object) =>
-  Object.keys(o).reduce((acc, key) => 
-    f(o[key]) ? attachProperty(acc, key, f(o[key])) : acc, {})
+  Object.keys(o).reduce((acc, key) => attachProperty(acc, key, f(o[key])), {})
 
 export const map = (f: Function, i: Iterable): Either<Iterable, Function> =>
   typeof i === 'undefined'
