@@ -22,6 +22,22 @@ addOne([ 2, 3, 4, 5, 6 ])
   => [ 3, 4, 5, 6, 7 ]
 ```
 
+### range
+
+```js
+const r = range(10)
+  => [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+### lhs & rhs
+
+```js
+const a = lhs('a', 'b')
+  => 'a'
+const b = rhs('a', 'b')
+  => 'b'
+```
+
 ### filter
 
 ```js
